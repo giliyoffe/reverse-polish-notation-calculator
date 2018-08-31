@@ -1,13 +1,35 @@
 
 
-
+//let result = document.getElementById("submitBtn").addEventListener("click", calculate(document.getElementById("expression").value));
 let result = document.getElementById("submitBtn").addEventListener("click", calculate(document.getElementById("expression").value)
 );
 
-//Array for identifying operators
-const operatorsArr = ["+", "-", "*", "/"];
+// //Array for identifying operators
+// const operatorsArr = ["+", "-", "*", "/"];
 
-const operators = {
+// const operators = {
+//     "+" : function (num1, num2) {
+//       return parseFloat(num1) + parseFloat(num2);
+//     },
+//     "-" : function (num1, num2) {
+//         return num1 - num2;
+//     },
+//     "*" : function (num1, num2) {
+//         return num1 * num2;
+//     },
+//   "/" : function (num1, num2) {
+//         return num1 / num2;
+//     }
+//   };
+
+function calculate (expression) {
+  
+  //Empty expression
+  if(expression === ""){
+    return 0;
+
+  }
+  const operators = {
     "+" : function (num1, num2) {
       return parseFloat(num1) + parseFloat(num2);
     },
@@ -21,14 +43,11 @@ const operators = {
         return num1 / num2;
     }
   };
+//TODO: CAN MOVE OUT OF FUNC.
+  //Array for identifying operators
+const operatorsArr = ["+", "-", "*", "/"];
 
-function calculate (expression) {
-  
-  //Empty expression
-  if(expression === ""){
-    return 0;
-
-  }
+//TODO: CAN MOVE OUT OF FUNC.
 
 //TODO: CAN MOVE OUT OF FUNC.?
   //calculate math operation on numbers by a given operator
@@ -75,43 +94,43 @@ document.getElementById("result").innerHTML = result;
 
 
 /* // TODO:
-tests:
+  tests:
 
-let assert = require("chai").assert;
-describe('Challenge', function() {
-  it('should work for an empty string', function() {
-    assert.equal(calculate(""), 0);
-  });
+  let assert = require("chai").assert;
+  describe('Challenge', function() {
+    it('should work for an empty string', function() {
+      assert.equal(calculate(""), 0);
+    });
 
-  it('should parse numbers', function() {
-    assert.equal(calculate("1 2 3"), 3);
-  });
+    it('should parse numbers', function() {
+      assert.equal(calculate("1 2 3"), 3);
+    });
+    
+    it('should parse floats', function() {
+      assert.equal(calculate("1 2 3.5"), 3.5);
+      assert.equal(calculate("1 3.5 +"), 4.5);
+      assert.equal(calculate("1.3 4.5 +"), 5.8);
+    });
+    
+    it('should support addition', function() {
+      assert.equal(calculate("1 3 +"), 4);
+      assert.equal(calculate("10000 123 +"), 10123);
+    });
   
-  it('should parse floats', function() {
-    assert.equal(calculate("1 2 3.5"), 3.5);
-    assert.equal(calculate("1 3.5 +"), 4.5);
-    assert.equal(calculate("1.3 4.5 +"), 5.8);
+    it('should support multiplication', function() {
+      assert.equal(calculate("1 3 *"), 3);
+    });
+    
+    it('should support subtraction', function() {
+      assert.equal(calculate("1 3 -"), -2);
+    });
+    
+    it('should support division', function() {
+      assert.equal(calculate("4 2 /"), 2);
+    });
+    
+    it('should support multiple operations', function() {
+      assert.equal(calculate("5 1 2 + 4 * + 3 -"), 14);
+    });
   });
-  
-  it('should support addition', function() {
-    assert.equal(calculate("1 3 +"), 4);
-    assert.equal(calculate("10000 123 +"), 10123);
-  });
- 
-  it('should support multiplication', function() {
-    assert.equal(calculate("1 3 *"), 3);
-  });
-  
-  it('should support subtraction', function() {
-    assert.equal(calculate("1 3 -"), -2);
-  });
-  
-  it('should support division', function() {
-    assert.equal(calculate("4 2 /"), 2);
-  });
-  
-  it('should support multiple operations', function() {
-    assert.equal(calculate("5 1 2 + 4 * + 3 -"), 14);
-  });
-});
 */
