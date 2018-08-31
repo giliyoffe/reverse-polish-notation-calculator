@@ -1,8 +1,21 @@
 
+let result = 0.0;
 
-//let result = document.getElementById("submitBtn").addEventListener("click", calculate(document.getElementById("expression").value));
-let result = document.getElementById("submitBtn").addEventListener("click", calculate(document.getElementById("expression").value)
-);
+let expression = document.getElementById('expression');
+
+expression.focus(); //TODO change all to this
+
+document.getElementById('expression').addEventListener("keypress", function() {
+  let tmpExpr = document.getElementById('expression').value;
+  // tmpExpr = tmpExpr + ' ';
+  document.getElementById('expression').value = tmpExpr + ' ';
+});
+
+document.getElementById('submitBtn').addEventListener('click', function(){
+  const expression = document.getElementById('expression').value;
+  result = calculate(expression);
+  document.getElementById('result').innerHTML = result;
+});
 
 // //Array for identifying operators
 // const operatorsArr = ["+", "-", "*", "/"];
@@ -22,7 +35,74 @@ let result = document.getElementById("submitBtn").addEventListener("click", calc
 //     }
 //   };
 
+
 function calculate (expression) {
+  
+  //Empty expression
+  if(expression === ""){
+    return 0;
+  }
+    
+  const operators = {
+    "+" : function (num1, num2) {
+      return parseFloat(num1) + parseFloat(num2);
+    },
+    "-" : function (num1, num2) {
+        return num1 - num2;
+    },
+    "*" : function (num1, num2) {
+        return num1 * num2;
+    },
+	"/" : function (num1, num2) {
+        return num1 / num2;
+    }
+  };
+
+  //calculate math operation on numbers by a given operator
+  function calc(numbersArray, operator) {
+      return numbersArray.reduce(operators[operator]);
+  }
+
+  const expressionArray = expression.split(" ");
+  
+  //store evaluated elments
+  let calculated = [];
+      
+  let hasOperator = false;
+  
+  //Array for identifying operators
+  const operatorsArr = ["+", "-", "*", "/"];
+  
+  for(i = 0; i <= expressionArray.length; i++){
+    
+    if(operatorsArr.indexOf(expressionArray[i]) == -1){
+      //-1 if is not an operator
+      calculated.push(expressionArray[i]);
+      
+    } else if( operatorsArr.indexOf(expressionArray[i]) != -1 ){
+
+      hasOperator = true;
+
+      let secondOperand = calculated.pop();
+      let firstOperand = calculated.pop();
+      //expressionArray[i] is the operator to be used in this calculation
+      let tmpSum = calc([firstOperand, secondOperand], expressionArray[i])
+      calculated.push(tmpSum.toString());
+    }
+  }
+  
+  //No Operator in expression. Return last number in expression.
+  if(!hasOperator){
+    return parseFloat(expressionArray[expressionArray.length-1]);
+  }
+  
+ return parseFloat(calculated[0]);
+}
+
+
+
+/*
+  function calculate (expression) {
   
   //Empty expression
   if(expression === ""){
@@ -57,7 +137,7 @@ const operatorsArr = ["+", "-", "*", "/"];
 
   const expressionArray = expression.split(" ");
   
-  //store evaluated elments
+  //store evaluated elements
   let calculated = [];
       
   let hasOperator = false;
@@ -68,7 +148,7 @@ const operatorsArr = ["+", "-", "*", "/"];
       // if is not an operator
       calculated.push(expressionArray[i]);
       
-    } else if( operatorsArr.includes(expressionArray[i]) ){
+    } else if( !operatorsArr.includes(expressionArray[i]) ){
 
     //TODO: test that new changes work with the includes instead of the indexOf
 
@@ -89,8 +169,8 @@ const operatorsArr = ["+", "-", "*", "/"];
   
  return parseFloat(calculated[0]);
 }
+*/
 
-document.getElementById("result").innerHTML = result;
 
 
 /* // TODO:
