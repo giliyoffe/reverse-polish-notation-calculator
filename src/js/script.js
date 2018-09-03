@@ -64,7 +64,7 @@ function calculate (expression) {
   }
 
   const expressionArray = expression.split(" ");
-  
+  expressionArray.shift(); //remove first space
   //store evaluated elments
   let calculated = [];
       
@@ -96,7 +96,7 @@ function calculate (expression) {
     return parseFloat(expressionArray[expressionArray.length-1]);
   }
   
- return parseFloat(calculated[0]);
+ return parseFloat(calculated[0]).toString();
 }
 
 
