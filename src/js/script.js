@@ -17,12 +17,12 @@ submitBtn.addEventListener('click', function(){
   document.getElementById('result').innerHTML = result;
 });
 
-expression.addEventListener("keyup", function(event) {
-    event.preventDefault();
-    if (event.keyCode === 13) {
-        submitBtn.click();
-    }
-});
+// expression.addEventListener("keyup", function(event) {
+//     event.preventDefault();
+//     if (event.keyCode === 13) {
+//         submitBtn.click();
+//     }
+// });
 
 //Array for identifying operators
 const operatorsArr = ["+", "-", "*", "/"];
