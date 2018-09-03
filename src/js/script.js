@@ -12,8 +12,8 @@ expression.addEventListener("keypress", function() {
 });
 
 submitBtn.addEventListener('click', function(){
-  const expression = expression.value;
-  result = calculate(expression);
+  const expressionVal = expression.value;
+  result = calculate(expressionVal);
   document.getElementById('result').innerHTML = result;
 });
 
