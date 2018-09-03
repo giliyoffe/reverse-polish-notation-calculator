@@ -1,8 +1,8 @@
 
 let result = 0.0;
 
-let expression = document.getElementById('expression');
-let submitBtn = document.getElementById('submitBtn');
+const expression = document.getElementById('expression');
+const submitBtn = document.getElementById('submitBtn');
 
 expression.focus(); //TODO change all to this
 
