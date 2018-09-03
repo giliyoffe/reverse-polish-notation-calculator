@@ -2,18 +2,26 @@
 let result = 0.0;
 
 let expression = document.getElementById('expression');
+let submitBtn = document.getElementById('submitBtn');
 
 expression.focus(); //TODO change all to this
 
-document.getElementById('expression').addEventListener("keypress", function() {
-  let tmpExpr = document.getElementById('expression').value;
-  document.getElementById('expression').value = tmpExpr + ' ';
+expression.addEventListener("keypress", function() {
+  let tmpExpr = expression.value;
+  expression.value = tmpExpr + ' ';
 });
 
-document.getElementById('submitBtn').addEventListener('click', function(){
-  const expression = document.getElementById('expression').value;
+submitBtn.addEventListener('click', function(){
+  const expression = expression.value;
   result = calculate(expression);
   document.getElementById('result').innerHTML = result;
+});
+
+expression.addEventListener("keyup", function(event) {
+    event.preventDefault();
+    if (event.keyCode === 13) {
+        submitBtn.click();
+    }
 });
 
 //Array for identifying operators
@@ -78,8 +86,6 @@ function calculate (expression) {
   
  return parseFloat(calculated[0]).toString();
 }
-
-
 
 /*
   function calculate (expression) {
