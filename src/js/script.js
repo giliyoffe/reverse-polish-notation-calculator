@@ -65,7 +65,7 @@ function calculate (expression) {
   for(i = 0; i <= expressionArray.length; i++){
     
     if(!operatorsArr.includes(expressionArray[i])){
-      //-1 if is not an operator
+
       calculated.push(expressionArray[i]);
       
     } else if( operatorsArr.includes(expressionArray[i]) ){
