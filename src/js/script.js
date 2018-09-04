@@ -68,7 +68,7 @@ function calculate (expression) {
       //-1 if is not an operator
       calculated.push(expressionArray[i]);
       
-    } else if( operatorsArr.indexOf(expressionArray[i]) != -1 ){
+    } else if( operatorsArr.includes(expressionArray[i]) ){
 
       hasOperator = true;
 
