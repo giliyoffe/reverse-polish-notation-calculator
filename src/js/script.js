@@ -17,6 +17,7 @@ submitBtn.addEventListener('click', function(){
   document.getElementById('result').innerHTML = result;
 });
 
+//execute on enter
 expression.addEventListener("keyup", function(event) {
     event.preventDefault();
     if (event.keyCode === 13) {
@@ -42,6 +43,14 @@ const operators = {
     }
   };
 
+//calculate math operation on numbers by a given operator
+
+function calc(numbersArray, operator) {
+
+return numbersArray.reduce(operators[operator]);
+
+  }
+
 function calculate (expression) {
   
   //Empty expression
@@ -50,9 +59,9 @@ function calculate (expression) {
   }
 
   //calculate math operation on numbers by a given operator
-  function calc(numbersArray, operator) {
+  /*function calc(numbersArray, operator) {
       return numbersArray.reduce(operators[operator]);
-  }
+  }*/
 
   const expressionArray = expression.split(" ");
   expressionArray.shift(); //remove first space
