@@ -4,7 +4,7 @@ let result = 0.0;
 const expression = document.getElementById('expression');
 const submitBtn = document.getElementById('submitBtn');
 
-expression.focus(); //TODO change all to this
+expression.focus();
 
 expression.addEventListener("keypress", function() {
   let tmpExpr = expression.value;
@@ -41,15 +41,12 @@ const operators = {
   "/" : function (num1, num2) {
         return num1 / num2;
     }
-  };
+};
 
 //calculate math operation on numbers by a given operator
-
 function calc(numbersArray, operator) {
-
-return numbersArray.reduce(operators[operator]);
-
-  }
+  return numbersArray.reduce(operators[operator]);
+}
 
 function calculate (expression) {
   
@@ -57,11 +54,6 @@ function calculate (expression) {
   if(expression === ""){
     return 0;
   }
-
-  //calculate math operation on numbers by a given operator
-  /*function calc(numbersArray, operator) {
-      return numbersArray.reduce(operators[operator]);
-  }*/
 
   const expressionArray = expression.split(" ");
   expressionArray.shift(); //remove first space
@@ -95,78 +87,6 @@ function calculate (expression) {
   
  return parseFloat(calculated[0]).toString();
 }
-
-/*
-  function calculate (expression) {
-  
-  //Empty expression
-  if(expression === ""){
-    return 0;
-
-  }
-  const operators = {
-    "+" : function (num1, num2) {
-      return parseFloat(num1) + parseFloat(num2);
-    },
-    "-" : function (num1, num2) {
-        return num1 - num2;
-    },
-    "*" : function (num1, num2) {
-        return num1 * num2;
-    },
-  "/" : function (num1, num2) {
-        return num1 / num2;
-    }
-  };
-//TODO: CAN MOVE OUT OF FUNC.
-  //Array for identifying operators
-const operatorsArr = ["+", "-", "*", "/"];
-
-//TODO: CAN MOVE OUT OF FUNC.
-
-//TODO: CAN MOVE OUT OF FUNC.?
-  //calculate math operation on numbers by a given operator
-  function calc(num1, num2, operator) {
-    return operators[operator](num1, num2);
-  }
-
-  const expressionArray = expression.split(" ");
-  
-  //store evaluated elements
-  let calculated = [];
-      
-  let hasOperator = false;
-  
-  for(i = 0; i <= expressionArray.length; i++){
-    
-    if(operatorsArr.includes(expressionArray[i])){
-      // if is not an operator
-      calculated.push(expressionArray[i]);
-      
-    } else if( !operatorsArr.includes(expressionArray[i]) ){
-
-    //TODO: test that new changes work with the includes instead of the indexOf
-
-      hasOperator = true;
-
-      let secondOperand = calculated.pop();
-      let firstOperand = calculated.pop();
-      //expressionArray[i] is the operator to be used in this calculation
-      let tmpSum = calc([firstOperand, secondOperand], expressionArray[i])
-      calculated.push(tmpSum.toString());
-    }
-  }
-  
-  //No Operator in expression. Return last number in expression.
-  if(!hasOperator){
-    return parseFloat(expressionArray[expressionArray.length-1]);
-  }
-  
- return parseFloat(calculated[0]);
-}
-*/
-
-
 
 /* // TODO:
   tests:
