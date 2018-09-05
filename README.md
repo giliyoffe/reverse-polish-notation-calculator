@@ -7,13 +7,13 @@ Reverse Polish Notation (RPN) Calculator
 
 ```JavaScript
 // 1 + 2 = 3
-rpnCalculator('1 2 +'); // 3
+input('1 2 +'); // 3
 
 // 1 + 2 - 3 = 0
-rpnCalculator('1 2 + 3 -'); // 0
+input('1 2 + 3 -'); // 0
 
 // (1 + 2) * 3 = 9
-rpnCalculator('1 2 + 3 *'); // 9
+input('1 2 + 3 *'); // 9
 ```
 
 ### Available operators
